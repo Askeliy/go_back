@@ -37,7 +37,7 @@ func ConnectDB(config *Config) {
 
 	// Выполняем миграцию моделей в базе данных
 	// Если миграция не удалась, выводим ошибку и завершаем программу
-	if err := DB.AutoMigrate(&models.User{}, &models.ScheduleItem{}, &models.TaskItem{}, &models.CalendarItem{}); err != nil {
+	if err := DB.AutoMigrate(&models.User{}, &models.ScheduleItem{}, &models.TaskItem{}, &models.CalendarItem{}, &models.VerificationRequest{}); err != nil {
 		log.Fatal("Migrations failed: ", err.Error())
 	}
 

@@ -12,6 +12,7 @@ type User struct {
 	Name              string    `json:"name"`
 	Email             string    `gorm:"unique" json:"email"`
 	Password          string    `json:"-"`
+	VerificationCode  string    `json:"-"`
 	PasswordResetCode string    `json:"-"`
 	CodeExpiry        time.Time `json:"-"`
 	CodeUsed          bool      `json:"-"`

@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: bK7OYQ2ikfoRMSM
       POSTGRES_DB: project
     ports:
-      - "5433:5433"
+      - "5432:5432"
     networks:
       - app-network
 

@@ -36,7 +36,7 @@ func main() {
 
 	// Используйте middleware CORS
 	micro.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:8081",
+		AllowOrigins: "http://localhost:8081, http://192.168.1.166:8000",
 		AllowMethods: "GET,POST,PUT,DELETE",
 		AllowHeaders: "Content-Type,Authorization",
 	}))
@@ -44,6 +44,8 @@ func main() {
 	micro.Route("/user", func(router fiber.Router) {
 		router.Post("/login", controllers.LoginUser)
 		router.Post("/register", controllers.CreateUser)
+		router.Post("/send-code", controllers.SendNewUserCode)
+		router.Post("/confirm-code", controllers.ConfirmNewUser)
 		router.Post("/change-password", controllers.ChangePassword)
 		router.Post("/confirm-change-password", controllers.ConfirmChangePassword)
 		router.Delete("/:userId", controllers.DeleteUser)
@@ -68,5 +70,5 @@ func main() {
 		router.Delete("/delete-calendar/:userId/:id", controllers.DeleteCalendar)
 	})
 
-	log.Fatal(app.Listen(":8080"))
+	log.Fatal(app.Listen(":8000"))
 }
